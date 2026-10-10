@@ -1,0 +1,109 @@
+{
+  "updated": "2026-10-10",
+  "items": [
+    {
+      "repo": "vu23560lesson1deck",
+      "url": "https://teacherfrances.github.io/vu23560lesson1deck/",
+      "lesson": 1,
+      "type": "deck",
+      "title": "Welcome back to Term 4: Find it online",
+      "created": "2026-10-10"
+    },
+    {
+      "repo": "vu23560lesson1revision",
+      "url": "https://teacherfrances.github.io/vu23560lesson1revision/",
+      "lesson": 1,
+      "type": "revision",
+      "title": "Find it online: revision",
+      "created": "2026-10-10"
+    },
+    {
+      "repo": "vu23560lesson1doublejeopardy",
+      "url": "https://teacherfrances.github.io/vu23560lesson1doublejeopardy/",
+      "lesson": 1,
+      "type": "jeopardy",
+      "title": "Find it online: Double Jeopardy",
+      "created": "2026-10-10"
+    },
+    {
+      "repo": "VU23560lesson1escaperoom",
+      "url": "https://teacherfrances.github.io/VU23560lesson1escaperoom/",
+      "lesson": 1,
+      "type": "escape",
+      "title": "Locked in the Computer Room",
+      "created": "2026-10-09"
+    },
+    {
+      "repo": "vu23560lesson2deck",
+      "url": "https://teacherfrances.github.io/vu23560lesson2deck/",
+      "lesson": 2,
+      "type": "deck",
+      "title": "Lesson 2: Learn English online",
+      "created": "2026-10-10"
+    },
+    {
+      "repo": "vu23560lesson2revision",
+      "url": "https://teacherfrances.github.io/vu23560lesson2revision/",
+      "lesson": 2,
+      "type": "revision",
+      "title": "Learn English online: revision",
+      "created": "2026-10-10"
+    },
+    {
+      "repo": "vu23560lesson2doublejeopardy",
+      "url": "https://teacherfrances.github.io/vu23560lesson2doublejeopardy/",
+      "lesson": 2,
+      "type": "jeopardy",
+      "title": "Learn English online: Double Jeopardy",
+      "created": "2026-10-10"
+    },
+    {
+      "repo": "VU23560lesson2escaperoom",
+      "url": "https://teacherfrances.github.io/VU23560lesson2escaperoom/",
+      "lesson": 2,
+      "type": "escape",
+      "title": "After Hours at the Library",
+      "created": "2026-10-09"
+    },
+    {
+      "repo": "vu23560lesson3deck",
+      "url": "https://teacherfrances.github.io/vu23560lesson3deck/",
+      "lesson": 3,
+      "type": "deck",
+      "title": "Lesson 3: Writing to a business",
+      "created": "2026-10-10"
+    },
+    {
+      "repo": "vu23560lesson3revision",
+      "url": "https://teacherfrances.github.io/vu23560lesson3revision/",
+      "lesson": 3,
+      "type": "revision",
+      "title": "Writing to a business: revision",
+      "created": "2026-10-10"
+    },
+    {
+      "repo": "vu23560lesson3doublejeopardy",
+      "url": "https://teacherfrances.github.io/vu23560lesson3doublejeopardy/",
+      "lesson": 3,
+      "type": "jeopardy",
+      "title": "Writing to a business: Double Jeopardy",
+      "created": "2026-10-10"
+    },
+    {
+      "repo": "VU23560lesson3escaperoom",
+      "url": "https://teacherfrances.github.io/VU23560lesson3escaperoom/",
+      "lesson": 3,
+      "type": "escape",
+      "title": "The P Block Board Game",
+      "created": "2026-10-09"
+    },
+    {
+      "repo": "vu23560seekandfind1",
+      "url": "https://teacherfrances.github.io/vu23560seekandfind1/",
+      "lesson": 0,
+      "type": "seek",
+      "title": "Find It On The Screen",
+      "created": "2026-09-10"
+    }
+  ]
+}

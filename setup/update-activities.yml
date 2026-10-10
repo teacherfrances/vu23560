@@ -1,0 +1,41 @@
+name: Update activity list
+
+on:
+  schedule:
+    - cron: "23 * * * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - settings.json
+      - scripts/update_activities.py
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-activities
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Find vu23560 activity repos
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/update_activities.py
+      - name: Save the new list
+        run: |
+          if git diff --quiet -- activities.json; then
+            echo "Nothing new."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add activities.json
+            git commit -m "Update activity list"
+            git push
+          fi

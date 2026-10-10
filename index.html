@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VU23560 class web</title>
+<meta name="description" content="All the VU23560 Access the internet and email activities in one place.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23141414'/%3E%3Ccircle cx='32' cy='32' r='18' fill='none' stroke='%23F5A20F' stroke-width='6'/%3E%3Cpath d='M14 32h36M32 14c-9 10-9 26 0 36M32 14c9 10 9 26 0 36' stroke='%23F5A20F' stroke-width='4' fill='none'/%3E%3C/svg%3E">
+<style>
+:root{
+  --black:#141414; --bar:#1d1d1d; --addr:#3b3b3b;
+  --mid:#555; --grey:#7a7a7a; --line:#9a9a9a; --pale:#ececec; --pale2:#f5f5f5;
+  --or:#F5A20F; --or-tint:#FFF0D2; --or-deep:#8A5300; --red:#9b2c2c;
+  --disp:"Century Gothic","CenturyGothic","URW Gothic","URW Gothic L","AppleGothic","Avant Garde","Futura","Trebuchet MS",sans-serif;
+  --body:Calibri,Carlito,"Segoe UI",Candara,"Helvetica Neue",Arial,sans-serif;
+  --mono:Consolas,"Lucida Console","DejaVu Sans Mono","Courier New",monospace;
+}
+body.g0{--pc:#F5A20F;--pc-ink:#141414;--pc-tint:#FFF0D2}
+body.g1{--pc:#141414;--pc-ink:#F5A20F;--pc-tint:#EFEFEF}
+body.g2{--pc:#6B6B6B;--pc-ink:#ffffff;--pc-tint:#EBEBEB}
+body.g3{--pc:#F5A20F;--pc-ink:#141414;--pc-tint:#FFF0D2}
+*{box-sizing:border-box}
+html{font-size:28px}
+html.s1{font-size:34px}
+html.s2{font-size:42px}
+body{margin:0;min-height:100vh;font-family:var(--body);color:var(--black);background:#fff;line-height:1.3;
+  padding-bottom:env(safe-area-inset-bottom,0px)}
+button,a{font:inherit;color:inherit}
+button{cursor:pointer}
+button:focus-visible,a:focus-visible{outline:4px solid var(--or);outline-offset:2px;box-shadow:0 0 0 7px var(--black)}
+.disp{font-family:var(--disp);font-weight:700}
+
+/* top bar */
+.head{position:sticky;top:0;z-index:50}
+.top{background:var(--bar);color:#fff;display:flex;align-items:center;gap:.3rem;
+  padding:.25rem .4rem;padding-top:calc(.25rem + env(safe-area-inset-top,0px))}
+.dots{display:flex;gap:.2rem;flex:none}
+.dots i{display:block;width:.36rem;height:.36rem;border-radius:50%;background:#9a9a9a}
+.dots i:first-child{background:var(--or)}
+.addr{flex:1;min-width:0;background:var(--addr);border-radius:999px;padding:.2rem .7rem;font-size:.7rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb{background:#fff;color:#111;border:0;border-radius:4px;font-weight:700;font-size:.75rem;min-height:44px;min-width:44px;padding:0 .4rem;flex:none}
+.tb[disabled]{opacity:.4;cursor:default}
+.prog{height:.4rem;background:#fff;display:flex;gap:2px;padding:2px 2px 0}
+.prog i{display:block;flex:1;height:100%;background:var(--pale)}
+.prog i.on{background:var(--or)}
+
+.wrap{max-width:960px;margin:0 auto;padding:.5rem .6rem 2rem;overflow-wrap:break-word}
+
+/* hero */
+.hero{border:3px solid var(--black);border-bottom:10px solid var(--or);margin:.3em 0 .7em}
+.hero .hbar{background:var(--bar);color:#fff;padding:.25em .6em;font-size:.75em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;gap:.5em;align-items:center}
+.hero .hbar .tag{margin-left:auto;background:var(--or);color:var(--black);font-weight:700;padding:0 .4em;font-family:var(--disp)}
+.hero .panel{background:var(--or-tint);border-left:12px solid var(--or);margin:.6em;padding:.6em .8em}
+.eyebrow{font-family:var(--disp);font-weight:700;font-size:.75em}
+.big{font-family:var(--disp);font-weight:700;font-size:1.6em;line-height:1.1;margin:.15em 0}
+.sub{margin:.2em 0 0}
+
+/* search bar */
+.search{display:flex;flex-wrap:wrap;gap:.4em;align-items:stretch;margin:0 .6em .7em}
+.sbox{flex:1 1 12em;min-width:0;display:flex;align-items:center;gap:.4em;border:3px solid var(--black);border-radius:999px;background:#fff;padding:.2em .7em;min-height:2.2em}
+.sbox .typed{font-family:var(--mono);font-size:.8em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sbox .caret{display:inline-block;width:.12em;height:1em;background:var(--black);margin-left:.05em;vertical-align:-.1em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+.bb{border:3px solid var(--black);background:#fff;font-weight:700;min-height:2.1em;padding:.15em .7em;border-radius:4px;text-align:center;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:.3em}
+.bb.go{background:var(--or);color:var(--black);border-bottom-width:6px}
+.bb.go:active{transform:translateY(3px);border-bottom-width:3px}
+.bb.solid{background:var(--black);color:#fff}
+
+/* section bars (docx look) */
+.sbar{display:flex;align-items:stretch;margin:1.1em 0 .5em}
+.sbar .blk{background:var(--black);color:var(--or);font-family:var(--disp);font-weight:700;min-width:1.9em;display:flex;align-items:center;justify-content:center;font-size:1.05em;padding:0 .25em}
+.sbar .ttl{flex:1;background:var(--pale);border:3px solid var(--black);border-left:0;padding:.25em .6em;font-family:var(--disp);font-weight:700;display:flex;align-items:center;gap:.5em;flex-wrap:wrap}
+.count{background:var(--or);color:var(--black);border:2px solid var(--black);border-radius:999px;font-family:var(--body);font-size:.75em;padding:0 .5em}
+
+/* inbox */
+.inbox{border:3px solid var(--black);border-bottom-width:7px}
+.mail{display:flex;align-items:center;gap:.5em;width:100%;text-align:left;background:#fff;border:0;border-bottom:2px solid var(--line);padding:.4em .6em;min-height:2.4em;text-decoration:none}
+.mail:last-child{border-bottom:0}
+.mail:hover{background:var(--pale2)}
+.mail .dot{width:.5em;height:.5em;border-radius:50%;background:var(--or);border:2px solid var(--black);flex:none}
+.mail.read .dot{background:transparent;border-color:var(--line)}
+.mail .who{font-weight:700;flex:none;width:4.2em}
+.mail .subj{flex:1;min-width:0}
+.mail.unread .subj{font-weight:700}
+.mail.read{color:var(--mid)}
+.mail .when{flex:none;font-size:.75em;color:var(--mid)}
+.empty{padding:.5em .7em;color:var(--mid)}
+
+/* downloads */
+.dl{border:3px solid var(--black);background:var(--pale2);padding:.4em .7em}
+.dl .row{display:flex;align-items:center;gap:.5em;flex-wrap:wrap}
+.dl .bar{height:.7em;background:#fff;border:3px solid var(--black);margin:.35em 0 .1em;position:relative;overflow:hidden}
+.dl .bar i{display:block;height:100%;background:repeating-linear-gradient(45deg,var(--or) 0 .4em,#FFC75A .4em .8em);transition:width .6s}
+.dl .msg{color:var(--mid);margin:.2em 0 0}
+
+/* tabs */
+.tabs{display:flex;flex-wrap:wrap;gap:.25em;margin-top:.4em;padding:0 .2em;border-bottom:3px solid var(--black)}
+.tab{border:3px solid var(--black);border-bottom:0;border-radius:.4em .4em 0 0;background:var(--pale);padding:.25em .6em;min-height:2.2em;font-weight:700;display:flex;align-items:center;gap:.35em;position:relative;top:3px;max-width:100%}
+.tab .tn{font-family:var(--disp)}
+.tab .tc{font-weight:400;font-size:.75em;color:var(--mid)}
+.tab[aria-selected="true"]{background:#fff;border-top:7px solid var(--or);padding-bottom:calc(.25em + 3px)}
+.tab[aria-selected="true"] .tc{color:var(--black)}
+.tab.soon{border-style:dashed;background:#fff;color:var(--grey);cursor:default;font-weight:400}
+.tab .star{color:var(--or-deep)}
+.pane{border:3px solid var(--black);border-top:0;padding:.6em}
+.pane .paddr{display:flex;align-items:center;gap:.4em;background:var(--bar);color:#fff;border-radius:999px;padding:.15em .7em;font-size:.72em;margin-bottom:.6em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ptitle{font-family:var(--disp);font-weight:700;font-size:1.15em;margin:.1em 0 .1em}
+.plede{color:var(--mid);margin:0 0 .6em}
+
+/* bookmark cards */
+.grid{display:grid;grid-template-columns:1fr;gap:.6em}
+@media (min-width:760px){html:not(.s2) .grid{grid-template-columns:1fr 1fr}}
+.card{display:flex;align-items:stretch;text-decoration:none;border:3px solid var(--black);border-bottom-width:7px;background:#fff;position:relative;min-height:3.6em;transition:transform .12s}
+.card:hover{transform:translateY(-3px)}
+.card:active{transform:translateY(2px)}
+.card .ic{flex:none;width:2.4em;background:var(--pc,var(--or));display:flex;align-items:center;justify-content:center;font-size:1.25em;border-right:3px solid var(--black)}
+.card.t-deck .ic{background:var(--or)}
+.card.t-revision .ic{background:var(--black)}
+.card.t-jeopardy .ic{background:#6B6B6B}
+.card.t-escape .ic{background:var(--or-tint)}
+.card.t-seek .ic{background:var(--pale)}
+.card .bd{flex:1;min-width:0;padding:.35em .6em}
+.card .kind{font-family:var(--disp);font-weight:700;font-size:.72em;text-transform:uppercase;letter-spacing:.04em;color:var(--or-deep)}
+.card .nm{font-family:var(--disp);font-weight:700;font-size:1em;line-height:1.15;margin:.05em 0}
+.card .ds{color:var(--mid);font-size:.85em;margin:.1em 0}
+.card .open{display:inline-block;margin-top:.25em;font-weight:700;border-bottom:3px solid var(--or)}
+.card .new{position:absolute;top:-.55em;right:.5em;background:var(--or);border:2px solid var(--black);font-weight:700;font-size:.65em;padding:0 .45em;border-radius:999px}
+.stamp{display:inline-block;margin:.25em 0 0 .5em;vertical-align:middle;border:3px solid var(--black);background:var(--black);color:var(--or);font-family:var(--disp);font-weight:700;font-size:.7em;padding:.05em .45em;transform:rotate(-6deg)}
+.card.done{background:var(--pale2)}
+.card.flash{animation:pop .45s}
+@keyframes pop{40%{transform:scale(1.04)}}
+
+.note{display:flex;background:var(--pale2);margin:.8em 0 0}
+.note .badge{width:1.7em;flex:none;background:#555;color:#fff;display:flex;justify-content:center;padding-top:.3em;font-weight:700}
+.note.ok .badge{background:var(--black);color:var(--or)}
+.note .nb{padding:.4em .7em;flex:1;min-width:0}
+.note p{margin:.15em 0}
+
+.reset{background:none;border:0;color:var(--mid);text-decoration:underline;min-height:44px;font-size:.75em;margin-top:.8em}
+.toast{position:fixed;left:50%;bottom:calc(1rem + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(calc(100% + 4rem));visibility:hidden;background:var(--black);color:#fff;border:3px solid var(--or);border-radius:999px;padding:.25em 1em;font-weight:700;z-index:90;transition:transform .3s;max-width:94vw;text-align:center}
+.toast.on{transform:translateX(-50%) translateY(0);visibility:visible}
+.confetti{position:fixed;top:-2rem;z-index:100;pointer-events:none;width:.45rem;height:.8rem;animation:fall 2.8s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .card:hover,.card:active{transform:none}
+}
+@media (max-width:520px){
+  .mail .who{display:none}
+  .wrap{padding:.4rem .4rem 2rem}
+  .card .ic{width:1.7em;font-size:1.05em}
+  .tabs{display:grid;grid-template-columns:1fr 1fr;gap:.25em;border-bottom:0;padding:0;margin-bottom:.3em}
+  .tab{font-size:.85em;border-bottom:3px solid var(--black);border-radius:.4em;top:0;justify-content:center;padding:.2em .3em}
+  .tab[aria-selected="true"]{padding-bottom:.2em;background:var(--or-tint)}
+  .pane{border-top:3px solid var(--black)}
+  .mail .when{display:none}
+  .card .bd{padding:.3em .45em}
+}
+</style>
+</head>
+<body class="g0">
+<header class="head"><div class="top">
+  <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="addr" id="addr">🔒 vu23560 › home</div>
+  <button class="tb" id="smaller" aria-label="Smaller text">A−</button>
+  <button class="tb" id="bigger" aria-label="Bigger text">A+</button>
+</div>
+<div class="prog" id="prog" aria-hidden="true"></div></header>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="hbar"><span>●●● 🔒 vu23560 › home</span><span class="tag">VU23560</span></div>
+    <div class="panel">
+      <div class="eyebrow">Access the internet and email · EAL Level 2</div>
+      <h1 class="big">Your class web 🌐</h1>
+      <p class="sub">All your games and slides are here. Tap a lesson tab. Then tap an activity.</p>
+    </div>
+    <div class="search">
+      <div class="sbox" aria-hidden="true">🔍 <span class="typed" id="typed"></span><span class="caret"></span></div>
+      <button class="bb go" id="lucky">🎲 I'm feeling lucky</button>
+    </div>
+  </section>
+
+  <div class="sbar"><div class="blk">📥</div><div class="ttl">Inbox <span class="count" id="newCount">0 new</span></div></div>
+  <div class="inbox" id="inbox"></div>
+
+  <div class="sbar"><div class="blk">⬇</div><div class="ttl">My downloads</div></div>
+  <div class="dl">
+    <div class="row"><strong id="dlText">0 of 0 done</strong></div>
+    <div class="bar"><i id="dlBar" style="width:0"></i></div>
+    <p class="msg" id="dlMsg">Open an activity to start.</p>
+  </div>
+
+  <div class="sbar"><div class="blk">⭐</div><div class="ttl">My lessons</div></div>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div class="pane" role="tabpanel" id="pane"></div>
+
+  <div class="note" id="saveNote">
+    <div class="badge">i</div>
+    <div class="nb"><p>Your ticks save on this device. Use the same phone or computer next time.</p></div>
+  </div>
+  <button class="reset" id="reset">Clear my ticks</button>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script id="seed" type="application/json">
+{"updated":"2026-10-10","items":[
+{"repo":"vu23560lesson1deck","url":"https://teacherfrances.github.io/vu23560lesson1deck/","lesson":1,"type":"deck","title":"Welcome back to Term 4: Find it online","created":"2026-10-10"},
+{"repo":"vu23560lesson1revision","url":"https://teacherfrances.github.io/vu23560lesson1revision/","lesson":1,"type":"revision","title":"Find it online: revision","created":"2026-10-10"},
+{"repo":"vu23560lesson1doublejeopardy","url":"https://teacherfrances.github.io/vu23560lesson1doublejeopardy/","lesson":1,"type":"jeopardy","title":"Find it online: Double Jeopardy","created":"2026-10-10"},
+{"repo":"VU23560lesson1escaperoom","url":"https://teacherfrances.github.io/VU23560lesson1escaperoom/","lesson":1,"type":"escape","title":"Locked in the Computer Room","created":"2026-10-09"},
+{"repo":"vu23560lesson2deck","url":"https://teacherfrances.github.io/vu23560lesson2deck/","lesson":2,"type":"deck","title":"Lesson 2: Learn English online","created":"2026-10-10"},
+{"repo":"vu23560lesson2revision","url":"https://teacherfrances.github.io/vu23560lesson2revision/","lesson":2,"type":"revision","title":"Learn English online: revision","created":"2026-10-10"},
+{"repo":"vu23560lesson2doublejeopardy","url":"https://teacherfrances.github.io/vu23560lesson2doublejeopardy/","lesson":2,"type":"jeopardy","title":"Learn English online: Double Jeopardy","created":"2026-10-10"},
+{"repo":"VU23560lesson2escaperoom","url":"https://teacherfrances.github.io/VU23560lesson2escaperoom/","lesson":2,"type":"escape","title":"After Hours at the Library","created":"2026-10-09"},
+{"repo":"vu23560lesson3deck","url":"https://teacherfrances.github.io/vu23560lesson3deck/","lesson":3,"type":"deck","title":"Lesson 3: Writing to a business","created":"2026-10-10"},
+{"repo":"vu23560lesson3revision","url":"https://teacherfrances.github.io/vu23560lesson3revision/","lesson":3,"type":"revision","title":"Writing to a business: revision","created":"2026-10-10"},
+{"repo":"vu23560lesson3doublejeopardy","url":"https://teacherfrances.github.io/vu23560lesson3doublejeopardy/","lesson":3,"type":"jeopardy","title":"Writing to a business: Double Jeopardy","created":"2026-10-10"},
+{"repo":"VU23560lesson3escaperoom","url":"https://teacherfrances.github.io/VU23560lesson3escaperoom/","lesson":3,"type":"escape","title":"The P Block Board Game","created":"2026-10-09"},
+{"repo":"vu23560seekandfind1","url":"https://teacherfrances.github.io/vu23560seekandfind1/","lesson":0,"type":"seek","title":"Find It On The Screen","created":"2026-09-10"}
+]}
+</script>
+<script id="seedSettings" type="application/json">
+{"prefix":"vu23560","hide":["VU23560_week1_lesson1"],"titles":{},"lessonNames":{},"types":{}}
+</script>
+<script>
+(function(){
+"use strict";
+
+/* ---------- settings ---------- */
+var OWNER = (location.hostname.match(/^([^.]+)\.github\.io$/i) || [0, "teacherfrances"])[1].toLowerCase();
+var HOME_REPO = (location.pathname.split("/")[1] || "vu23560").toLowerCase();
+var KEY = "vu23560-home-v1";
+var LIVE_KEY = "vu23560-home-live-v1";
+var NEW_DAYS = 14;
+var LIVE_EVERY = 60 * 60 * 1000;
+
+var TYPES = {
+  deck:     {label:"Lesson slides",   ic:"🖥️", desc:"Look back at the lesson."},
+  revision: {label:"Revision",        ic:"✅", desc:"Check what you know."},
+  jeopardy: {label:"Double Jeopardy", ic:"🏆", desc:"A team quiz game."},
+  escape:   {label:"Escape room",     ic:"🔐", desc:"Solve the clues to get out."},
+  seek:     {label:"Seek and find",   ic:"🔎", desc:"Find things on the screen."},
+  phone:    {label:"Phone game",      ic:"📱", desc:"Look inside the phone."},
+  email:    {label:"Email game",      ic:"✉️", desc:"Read and write emails."},
+  quiz:     {label:"Quiz",            ic:"❓", desc:"Answer the questions."},
+  speak:    {label:"Speaking practice", ic:"🎤", desc:"Listen and say it."},
+  other:    {label:"Activity",        ic:"⭐", desc:"Practise your English."}
+};
+var ORDER = ["deck","revision","jeopardy","escape","seek","phone","email","quiz","speak","other"];
+var SEARCHES = ["find a revision game", "play Double Jeopardy", "open an escape room", "look at the lesson slides", "check my inbox"];
+
+/* ---------- storage ---------- */
+var storeOK = (function(){ try { localStorage.setItem("_t","1"); localStorage.removeItem("_t"); return true; } catch(e){ return false; } })();
+function load(k, d){ if(!storeOK) return d; try { var v = JSON.parse(localStorage.getItem(k)); return v || d; } catch(e){ return d; } }
+function save(k, v){ if(!storeOK) return; try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+
+var state = load(KEY, {seen:{}, tab:null, size:0, cheered:false});
+if(!state.seen) state.seen = {};
+
+var settings = readJSON("seedSettings");
+var base = readJSON("seed").items;
+var extra = load(LIVE_KEY, {t:0, items:[]}).items || [];
+var items = [];
+
+function readJSON(id){ try { return JSON.parse(document.getElementById(id).textContent); } catch(e){ return {}; } }
+function $(id){ return document.getElementById(id); }
+function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+
+/* ---------- repo name rules (same as the hourly update) ---------- */
+function kindOf(name){
+  var n = name.toLowerCase();
+  var rules = [["deck",["deck","slides"]],["jeopardy",["jeopardy","board"]],["escape",["escape"]],["seek",["seek","findit","hunt"]],
+    ["phone",["phone"]],["email",["email","inbox"]],["quiz",["quiz"]],["speak",["record","sayit","pronun","speak"]],["revision",["revision","revise","review"]]];
+  for(var i=0;i<rules.length;i++){ for(var j=0;j<rules[i][1].length;j++){ if(n.indexOf(rules[i][1][j])>-1) return rules[i][0]; } }
+  return "other";
+}
+function lessonOf(name){ var m = name.match(/lesson[_\- ]?(\d+)/i); return m ? +m[1] : 0; }
+
+/* ---------- build the list ---------- */
+function merge(){
+  var hide = {}, byRepo = {}, out = [];
+  (settings.hide || []).forEach(function(h){ hide[h.toLowerCase()] = 1; });
+  base.concat(extra).forEach(function(it){
+    var k = it.repo.toLowerCase();
+    if(hide[k] || byRepo[k] || k === HOME_REPO) return;
+    var c = {};
+    for(var p in it) c[p] = it[p];
+    if(settings.types && settings.types[it.repo]) c.type = settings.types[it.repo];
+    if(!TYPES[c.type]) c.type = "other";
+    if(settings.titles && settings.titles[it.repo]) c.title = settings.titles[it.repo];
+    byRepo[k] = 1; out.push(c);
+  });
+  out.sort(function(a,b){
+    return ((a.lesson||999)-(b.lesson||999)) || (ORDER.indexOf(a.type)-ORDER.indexOf(b.type)) || (a.repo.toLowerCase()<b.repo.toLowerCase()?-1:1);
+  });
+  items = out;
+}
+
+function lessonNames(){
+  var names = {};
+  items.forEach(function(it){
+    if(!it.lesson) return;
+    var t = it.title || "";
+    var guess = "";
+    if((it.type==="revision"||it.type==="jeopardy") && t.indexOf(":")>0) guess = t.split(":")[0];
+    if(guess && !names[it.lesson]) names[it.lesson] = guess.trim();
+  });
+  items.forEach(function(it){
+    if(!it.lesson || names[it.lesson]) return;
+    if(it.type==="deck" && it.title.indexOf(":")>0) names[it.lesson] = it.title.split(":").slice(1).join(":").trim();
+  });
+  var s = settings.lessonNames || {};
+  for(var k in s) names[k] = s[k];
+  return names;
+}
+
+function nameFor(it, lname){
+  var t = (it.title || it.repo).trim(), info = TYPES[it.type];
+  if(lname){
+    var low = t.toLowerCase(), ln = lname.toLowerCase();
+    if(low.indexOf(ln + ":") === 0) t = t.slice(lname.length + 1).trim();
+    else if(low.slice(-ln.length - 2) === ": " + ln) t = t.slice(0, t.length - ln.length - 2).trim();
+    else if(low.slice(-ln.length - 1) === ":" + ln) t = t.slice(0, t.length - ln.length - 1).trim();
+  }
+  if(/^lesson \d+$/i.test(t) || t.toLowerCase() === info.label.toLowerCase() || t.toLowerCase()==="revision") t = "";
+  if(t) t = t.charAt(0).toUpperCase() + t.slice(1);
+  return t;
+}
+
+function daysAgo(d){
+  var then = new Date(d + "T00:00:00"), now = new Date();
+  now.setHours(0,0,0,0);
+  return Math.round((now - then) / 864e5);
+}
+function isNew(it){ var d = daysAgo(it.created); return d >= 0 && d <= NEW_DAYS; }
+function whenText(d){ var n = daysAgo(d); return n<=0 ? "Today" : n===1 ? "Yesterday" : n + " days ago"; }
+
+/* ---------- render ---------- */
+var names = {};
+function groups(){
+  var g = {}, keys = [];
+  items.forEach(function(it){ var k = String(it.lesson||0); if(!g[k]){ g[k]=[]; keys.push(k); } g[k].push(it); });
+  keys.sort(function(a,b){ return (+a||999)-(+b||999); });
+  return {g:g, keys:keys};
+}
+
+function render(){
+  merge();
+  names = lessonNames();
+  renderProgress();
+  renderInbox();
+  renderTabs();
+}
+
+function renderProgress(){
+  var done = 0;
+  var bars = items.map(function(it){ var on = !!state.seen[it.repo]; if(on) done++; return '<i class="'+(on?"on":"")+'"></i>'; });
+  $("prog").innerHTML = bars.join("");
+  var total = items.length, pct = total ? Math.round(done/total*100) : 0;
+  $("dlText").textContent = done + " of " + total + " done";
+  $("dlBar").style.width = pct + "%";
+  var msg;
+  if(!done) msg = "Open an activity to start.";
+  else if(done === total) msg = "Download complete! You did every activity. 🎉";
+  else if(pct >= 75) msg = "Nearly there. Only " + (total-done) + " to go!";
+  else if(pct >= 50) msg = "Over halfway. Keep going!";
+  else msg = "Good start. Try a new one.";
+  $("dlMsg").textContent = msg;
+  if(total && done === total && !state.cheered){ state.cheered = true; save(KEY, state); cheer(); }
+  if(done < total && state.cheered){ state.cheered = false; save(KEY, state); }
+}
+
+function renderInbox(){
+  var fresh = items.filter(isNew).sort(function(a,b){
+    var ua = state.seen[a.repo]?1:0, ub = state.seen[b.repo]?1:0;
+    return (ua-ub) || (a.created<b.created?1:a.created>b.created?-1:0);
+  });
+  var unread = fresh.filter(function(it){ return !state.seen[it.repo]; }).length;
+  $("newCount").textContent = unread + " new";
+  if(!fresh.length){
+    $("inbox").innerHTML = '<div class="empty">No new messages. Check again next week.</div>';
+    return;
+  }
+  var show = fresh.slice(0, 5);
+  var html = show.map(function(it){
+    var read = !!state.seen[it.repo];
+    var nm = nameFor(it, names[it.lesson]);
+    var subj = "New: " + (nm || TYPES[it.type].label) + (it.lesson ? " (Lesson " + it.lesson + ")" : " (Bonus)");
+    return '<a class="mail '+(read?"read":"unread")+'" href="'+esc(it.url)+'" data-repo="'+esc(it.repo)+'">'+
+      '<span class="dot" aria-hidden="true"></span><span class="who">Teacher</span>'+
+      '<span class="subj">'+esc(subj)+(read?'<span class="sr"> (opened)</span>':'')+'</span><span class="when">'+whenText(it.created)+'</span></a>';
+  }).join("");
+  if(fresh.length > show.length) html += '<div class="empty">And ' + (fresh.length-show.length) + ' more. Look in the lesson tabs.</div>';
+  $("inbox").innerHTML = html;
+}
+
+function renderTabs(){
+  var G = groups(), keys = G.keys;
+  if(!keys.length){
+    $("tabs").innerHTML = "";
+    $("pane").innerHTML = '<p class="plede">No activities yet. Check again soon.</p>';
+    return;
+  }
+  if(state.tab === null || keys.indexOf(state.tab) < 0){
+    var lessons = keys.filter(function(k){ return k !== "0"; });
+    state.tab = lessons.length ? lessons[lessons.length-1] : keys[0];
+  }
+  var maxL = 0;
+  keys.forEach(function(k){ if(+k > maxL) maxL = +k; });
+  var html = keys.map(function(k){
+    var list = G.g[k], done = list.filter(function(it){ return state.seen[it.repo]; }).length;
+    var label = k === "0" ? '<span class="star">★</span> <span class="tn">Bonus</span>' : '<span class="tn">Lesson ' + k + '</span>';
+    var tick = done === list.length ? " ✓" : "";
+    return '<button class="tab" role="tab" id="tab'+k+'" data-tab="'+k+'" aria-selected="'+(k===state.tab)+'" aria-controls="pane">'+
+      label + '<span class="tc">' + done + '/' + list.length + tick + '</span></button>';
+  }).join("");
+  html += '<span class="tab soon" aria-hidden="true">+ Lesson ' + (maxL+1) + ' soon</span>';
+  $("tabs").innerHTML = html;
+  renderPane(G.g[state.tab], state.tab);
+}
+
+function renderPane(list, k){
+  var lname = k === "0" ? "" : (names[k] || "");
+  var path = k === "0" ? "bonus" : "lesson-" + k;
+  document.body.className = "g" + (k === "0" ? 3 : (+k - 1) % 3);
+  $("addr").textContent = "🔒 vu23560 › " + path;
+  var title = k === "0" ? "Bonus games" : "Lesson " + k + (lname ? ": " + lname : "");
+  var lede = k === "0" ? "Extra practice. Try them any time." : "Tap a card to open it. Come back here when you finish.";
+  var html = '<div class="paddr">●●● 🔒 vu23560 › ' + path + '</div>' +
+    '<h2 class="ptitle">' + esc(title) + '</h2><p class="plede">' + lede + '</p><div class="grid">';
+  html += list.map(function(it){
+    var info = TYPES[it.type], nm = nameFor(it, lname), done = !!state.seen[it.repo];
+    var head = nm || info.label, kind = nm ? info.label : (k === "0" ? "Bonus" : "Lesson " + k);
+    return '<a class="card t-'+it.type+(done?" done":"")+'" href="'+esc(it.url)+'" data-repo="'+esc(it.repo)+'">'+
+      (isNew(it) && !done ? '<span class="new">NEW</span>' : '')+
+      '<span class="ic" aria-hidden="true">'+info.ic+'</span>'+
+      '<span class="bd"><span class="kind">'+esc(kind)+'</span><span class="nm" style="display:block">'+esc(head)+'</span>'+
+      '<span class="ds" style="display:block">'+info.desc+'</span><span class="open">'+(done?"Open again ▶":"Open ▶")+'</span>'+
+      (done ? '<span class="stamp">✓ Done</span>' : '')+'</span></a>';
+  }).join("");
+  html += '</div>';
+  $("pane").innerHTML = html;
+}
+
+/* ---------- actions ---------- */
+function openItem(repo, url){
+  var first = !state.seen[repo];
+  state.seen[repo] = Date.now();
+  save(KEY, state);
+  if(first){ render(); var c = document.querySelector('.card[data-repo="'+repo+'"]'); if(c) c.classList.add("flash"); }
+  setTimeout(function(){ location.href = url; }, first ? 350 : 0);
+}
+
+document.addEventListener("click", function(e){
+  var a = e.target.closest("a[data-repo]");
+  if(a){
+    if(e.ctrlKey || e.metaKey || e.shiftKey || e.button === 1){ state.seen[a.getAttribute("data-repo")] = Date.now(); save(KEY, state); setTimeout(render, 50); return; }
+    e.preventDefault();
+    openItem(a.getAttribute("data-repo"), a.href);
+    return;
+  }
+  var t = e.target.closest("[data-tab]");
+  if(t){ state.tab = t.getAttribute("data-tab"); save(KEY, state); renderTabs(); var f = $("tab"+state.tab); if(f) f.focus(); }
+});
+
+$("tabs").addEventListener("keydown", function(e){
+  if(e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+  var keys = groups().keys, i = keys.indexOf(state.tab);
+  i = (i + (e.key === "ArrowRight" ? 1 : -1) + keys.length) % keys.length;
+  state.tab = keys[i]; save(KEY, state); renderTabs(); $("tab"+state.tab).focus();
+});
+
+$("lucky").addEventListener("click", function(){
+  var left = items.filter(function(it){ return !state.seen[it.repo]; });
+  var pool = left.length ? left : items;
+  if(!pool.length) return;
+  var pick = pool[Math.floor(Math.random()*pool.length)];
+  var nm = nameFor(pick, names[pick.lesson]) || TYPES[pick.type].label;
+  state.tab = String(pick.lesson||0); save(KEY, state); renderTabs();
+  toast("🎲 " + nm + "! Opening now...");
+  var c = document.querySelector('.card[data-repo="'+pick.repo+'"]');
+  if(c){ c.scrollIntoView({block:"center", behavior: reduced() ? "auto" : "smooth"}); c.classList.add("flash"); }
+  setTimeout(function(){ openItem(pick.repo, pick.url); }, 1400);
+});
+
+$("reset").addEventListener("click", function(){
+  if(this.getAttribute("data-sure")){
+    state.seen = {}; state.cheered = false; save(KEY, state); render();
+    this.removeAttribute("data-sure"); this.textContent = "Clear my ticks"; toast("Ticks cleared.");
+  } else {
+    this.setAttribute("data-sure","1"); this.textContent = "Tap again to clear all your ticks";
+  }
+});
+
+/* text size: 28 / 34 / 42 px, the same steps as the activities */
+function applySize(){
+  document.documentElement.className = state.size ? "s" + state.size : "";
+  $("smaller").disabled = state.size <= 0;
+  $("bigger").disabled = state.size >= 2;
+}
+$("smaller").addEventListener("click", function(){ state.size = Math.max(0, state.size-1); save(KEY, state); applySize(); });
+$("bigger").addEventListener("click", function(){ state.size = Math.min(2, state.size+1); save(KEY, state); applySize(); });
+
+var toastT;
+function toast(msg){ var t = $("toast"); t.textContent = msg; t.classList.add("on"); clearTimeout(toastT); toastT = setTimeout(function(){ t.classList.remove("on"); }, 2600); }
+function reduced(){ return window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches; }
+
+function cheer(){
+  toast("🎉 Download complete! You did every activity!");
+  if(reduced()) return;
+  var cols = ["#F5A20F","#141414","#FFC75A","#6B6B6B","#FFF0D2"];
+  for(var i=0;i<80;i++){
+    var s = document.createElement("span");
+    s.className = "confetti";
+    s.style.left = Math.random()*100 + "vw";
+    s.style.background = cols[i % cols.length];
+    s.style.animationDelay = (Math.random()*0.8) + "s";
+    s.style.animationDuration = (2.2 + Math.random()*1.6) + "s";
+    document.body.appendChild(s);
+    (function(el){ setTimeout(function(){ el.remove(); }, 4800); })(s);
+  }
+}
+
+/* fake search bar: types example searches */
+(function typer(){
+  var el = $("typed"), w = 0, c = 0, back = false;
+  if(reduced()){ el.textContent = SEARCHES[0]; return; }
+  function step(){
+    var word = SEARCHES[w];
+    if(!back){ c++; el.textContent = word.slice(0,c); if(c >= word.length){ back = true; return setTimeout(step, 1800); } }
+    else { c--; el.textContent = word.slice(0,c); if(c <= 0){ back = false; w = (w+1) % SEARCHES.length; } }
+    setTimeout(step, back ? 35 : 80);
+  }
+  step();
+})();
+
+/* ---------- keep the list up to date ---------- */
+function getJSON(url){ return fetch(url, {cache:"no-cache"}).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }); }
+
+function refresh(){
+  /* 1. the list the hourly update saved */
+  Promise.all([
+    getJSON("settings.json").then(function(s){ settings = s; }).catch(function(){}),
+    getJSON("activities.json").then(function(d){ if(d && d.items && d.items.length) base = d.items; }).catch(function(){})
+  ]).then(function(){
+    render();
+    liveCheck();
+  });
+}
+
+/* 2. ask GitHub directly for brand-new repos (once an hour per device) */
+function liveCheck(){
+  var cache = load(LIVE_KEY, {t:0, items:[]});
+  if(Date.now() - (cache.t||0) < LIVE_EVERY) return;
+  var prefix = (settings.prefix || "vu23560").toLowerCase();
+  var url = "https://api.github.com/search/repositories?per_page=100&q=" + encodeURIComponent(prefix + " in:name user:" + OWNER);
+  fetch(url, {headers:{"Accept":"application/vnd.github+json"}})
+    .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function(d){
+      var known = {};
+      base.forEach(function(it){ known[it.repo.toLowerCase()] = 1; });
+      var found = (d.items || []).filter(function(r){
+        var n = r.name.toLowerCase();
+        return n.indexOf(prefix) === 0 && n !== HOME_REPO && r.has_pages && !r.private && !r.archived && !known[n];
+      });
+      return Promise.all(found.map(function(r){
+        var it = {repo:r.name, url:"https://" + OWNER + ".github.io/" + r.name + "/", lesson:lessonOf(r.name), type:kindOf(r.name), title:r.name, created:(r.created_at||"").slice(0,10)};
+        return fetch(it.url).then(function(p){ if(!p.ok) throw new Error(p.status); return p.text(); }).then(function(h){
+          var m = h.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
+          if(m && m[1].trim()){ it.title = new DOMParser().parseFromString(m[1].replace(/\s+/g," ").trim(), "text/html").documentElement.textContent; }
+          return it;
+        }).catch(function(){ return null; });
+      }));
+    })
+    .then(function(list){
+      extra = (list || []).filter(Boolean);
+      save(LIVE_KEY, {t:Date.now(), items:extra});
+      if(extra.length) render();
+    })
+    .catch(function(){ save(LIVE_KEY, {t:Date.now(), items:extra}); });
+}
+
+if(!storeOK){
+  $("saveNote").innerHTML = '<div class="badge" style="background:#9b2c2c">!</div><div class="nb"><p>This browser cannot save your ticks. The links still work.</p></div>';
+}
+applySize();
+render();
+refresh();
+})();
+</script>
+</body>
+</html>
