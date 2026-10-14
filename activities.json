@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-10",
+  "updated": "2026-10-14",
   "items": [
     {
       "repo": "vu23560lesson1deck",
@@ -32,6 +32,22 @@
       "type": "escape",
       "title": "Locked in the Computer Room",
       "created": "2026-10-09"
+    },
+    {
+      "repo": "vu23560lesson1ABC",
+      "url": "https://teacherfrances.github.io/vu23560lesson1ABC/",
+      "lesson": 1,
+      "type": "other",
+      "title": "Find it online: revision",
+      "created": "2026-10-14"
+    },
+    {
+      "repo": "vu23560lesson1screenwords",
+      "url": "https://teacherfrances.github.io/vu23560lesson1screenwords/",
+      "lesson": 1,
+      "type": "other",
+      "title": "Point With Words",
+      "created": "2026-10-14"
     },
     {
       "repo": "vu23560lesson2deck",
