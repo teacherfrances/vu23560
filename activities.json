@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-14",
+  "updated": "2026-10-20",
   "items": [
     {
       "repo": "vu23560lesson1deck",
@@ -34,6 +34,14 @@
       "created": "2026-10-09"
     },
     {
+      "repo": "vu23560lesson1rememberpoliterequestemail",
+      "url": "https://teacherfrances.github.io/vu23560lesson1rememberpoliterequestemail/",
+      "lesson": 1,
+      "type": "email",
+      "title": "Remember: a polite request email",
+      "created": "2026-10-20"
+    },
+    {
       "repo": "vu23560lesson1ABC",
       "url": "https://teacherfrances.github.io/vu23560lesson1ABC/",
       "lesson": 1,
@@ -54,7 +62,7 @@
       "url": "https://teacherfrances.github.io/vu23560lesson2deck/",
       "lesson": 2,
       "type": "deck",
-      "title": "Lesson 2: Learn English online",
+      "title": "Lesson 2: Writing to a business",
       "created": "2026-10-10"
     },
     {
@@ -62,7 +70,7 @@
       "url": "https://teacherfrances.github.io/vu23560lesson2revision/",
       "lesson": 2,
       "type": "revision",
-      "title": "Learn English online: revision",
+      "title": "Writing to a business: revision",
       "created": "2026-10-10"
     },
     {
@@ -70,7 +78,7 @@
       "url": "https://teacherfrances.github.io/vu23560lesson2doublejeopardy/",
       "lesson": 2,
       "type": "jeopardy",
-      "title": "Learn English online: Double Jeopardy",
+      "title": "Lesson 3: Learn English online",
       "created": "2026-10-10"
     },
     {
@@ -78,7 +86,7 @@
       "url": "https://teacherfrances.github.io/VU23560lesson2escaperoom/",
       "lesson": 2,
       "type": "escape",
-      "title": "After Hours at the Library",
+      "title": "The P Block Board Game",
       "created": "2026-10-09"
     },
     {
@@ -86,7 +94,7 @@
       "url": "https://teacherfrances.github.io/vu23560lesson3deck/",
       "lesson": 3,
       "type": "deck",
-      "title": "Lesson 3: Writing to a business",
+      "title": "Lesson 3: Learn English online",
       "created": "2026-10-10"
     },
     {
@@ -94,7 +102,7 @@
       "url": "https://teacherfrances.github.io/vu23560lesson3revision/",
       "lesson": 3,
       "type": "revision",
-      "title": "Writing to a business: revision",
+      "title": "Learn English online: revision",
       "created": "2026-10-10"
     },
     {
@@ -110,7 +118,7 @@
       "url": "https://teacherfrances.github.io/VU23560lesson3escaperoom/",
       "lesson": 3,
       "type": "escape",
-      "title": "The P Block Board Game",
+      "title": "After Hours at the Library",
       "created": "2026-10-09"
     },
     {
