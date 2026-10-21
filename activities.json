@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-20",
+  "updated": "2026-10-21",
   "items": [
     {
       "repo": "vu23560lesson1deck",
@@ -128,6 +128,102 @@
       "type": "escape",
       "title": "After Hours at the Library",
       "created": "2026-10-09"
+    },
+    {
+      "repo": "vu23560lesson4deck",
+      "url": "https://teacherfrances.github.io/vu23560lesson4deck/",
+      "lesson": 4,
+      "type": "deck",
+      "title": "Lesson 4: Start to finish online",
+      "created": "2026-10-21"
+    },
+    {
+      "repo": "vu23560lesson4revision",
+      "url": "https://teacherfrances.github.io/vu23560lesson4revision/",
+      "lesson": 4,
+      "type": "revision",
+      "title": "Start to finish online: revision",
+      "created": "2026-10-21"
+    },
+    {
+      "repo": "vu23560lesson4doublejeopardy",
+      "url": "https://teacherfrances.github.io/vu23560lesson4doublejeopardy/",
+      "lesson": 4,
+      "type": "jeopardy",
+      "title": "Start to finish online: Double Jeopardy",
+      "created": "2026-10-21"
+    },
+    {
+      "repo": "vu23560lesson4escaperoom",
+      "url": "https://teacherfrances.github.io/vu23560lesson4escaperoom/",
+      "lesson": 4,
+      "type": "escape",
+      "title": "Locked in the carpark",
+      "created": "2026-10-21"
+    },
+    {
+      "repo": "vu23560lesson5deck",
+      "url": "https://teacherfrances.github.io/vu23560lesson5deck/",
+      "lesson": 5,
+      "type": "deck",
+      "title": "Lesson 5: Hit send",
+      "created": "2026-10-21"
+    },
+    {
+      "repo": "vu23560lesson5revision",
+      "url": "https://teacherfrances.github.io/vu23560lesson5revision/",
+      "lesson": 5,
+      "type": "revision",
+      "title": "Hit send: revision",
+      "created": "2026-10-21"
+    },
+    {
+      "repo": "vu23560lesson5doublejeopardy",
+      "url": "https://teacherfrances.github.io/vu23560lesson5doublejeopardy/",
+      "lesson": 5,
+      "type": "jeopardy",
+      "title": "Hit send: Double Jeopardy",
+      "created": "2026-10-21"
+    },
+    {
+      "repo": "vu23560lesson5escaperoom",
+      "url": "https://teacherfrances.github.io/vu23560lesson5escaperoom/",
+      "lesson": 5,
+      "type": "escape",
+      "title": "Locked in the toilet",
+      "created": "2026-10-21"
+    },
+    {
+      "repo": "vu23560lesson6deck",
+      "url": "https://teacherfrances.github.io/vu23560lesson6deck/",
+      "lesson": 6,
+      "type": "deck",
+      "title": "Lesson 6: Ready, set, send",
+      "created": "2026-10-21"
+    },
+    {
+      "repo": "vu23560lesson6revision",
+      "url": "https://teacherfrances.github.io/vu23560lesson6revision/",
+      "lesson": 6,
+      "type": "revision",
+      "title": "Ready, set, send: revision",
+      "created": "2026-10-21"
+    },
+    {
+      "repo": "vu23560lesson6doublejeopardy",
+      "url": "https://teacherfrances.github.io/vu23560lesson6doublejeopardy/",
+      "lesson": 6,
+      "type": "jeopardy",
+      "title": "Ready, set, send: Double Jeopardy",
+      "created": "2026-10-21"
+    },
+    {
+      "repo": "vu23560lesson6escaperoom",
+      "url": "https://teacherfrances.github.io/vu23560lesson6escaperoom/",
+      "lesson": 6,
+      "type": "escape",
+      "title": "Locked in the lunchroom",
+      "created": "2026-10-21"
     },
     {
       "repo": "vu23560seekandfind1",
