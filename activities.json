@@ -86,7 +86,7 @@
       "url": "https://teacherfrances.github.io/vu23560lesson2doublejeopardy/",
       "lesson": 2,
       "type": "jeopardy",
-      "title": "Lesson 3: Learn English online",
+      "title": "Writing to a business: Double Jeopardy",
       "created": "2026-10-10"
     },
     {
@@ -232,6 +232,14 @@
       "type": "seek",
       "title": "Find It On The Screen",
       "created": "2026-09-10"
+    },
+    {
+      "repo": "vu23560internetmissions",
+      "url": "https://teacherfrances.github.io/vu23560internetmissions/",
+      "lesson": 0,
+      "type": "other",
+      "title": "Internet missions | VU23560",
+      "created": "2026-10-21"
     }
   ]
 }
