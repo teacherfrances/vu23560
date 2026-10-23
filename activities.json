@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-21",
+  "updated": "2026-10-23",
   "items": [
     {
       "repo": "vu23560lesson1deck",
@@ -232,6 +232,14 @@
       "type": "seek",
       "title": "Find It On The Screen",
       "created": "2026-09-10"
+    },
+    {
+      "repo": "vu23560emailmissions",
+      "url": "https://teacherfrances.github.io/vu23560emailmissions/",
+      "lesson": 0,
+      "type": "email",
+      "title": "Email missions | VU23560",
+      "created": "2026-10-23"
     },
     {
       "repo": "vu23560internetmissions",
