@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-23",
+  "updated": "2026-10-28",
   "items": [
     {
       "repo": "vu23560lesson1deck",
@@ -112,6 +112,14 @@
       "type": "revision",
       "title": "Learn English online: revision",
       "created": "2026-10-10"
+    },
+    {
+      "repo": "vu23560lesson3revision_short",
+      "url": "https://teacherfrances.github.io/vu23560lesson3revision_short/",
+      "lesson": 3,
+      "type": "revision",
+      "title": "Learn English online: revision 1 to 17",
+      "created": "2026-10-28"
     },
     {
       "repo": "vu23560lesson3doublejeopardy",
