@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-28",
+  "updated": "2026-11-01",
   "items": [
     {
       "repo": "vu23560lesson1deck",
@@ -232,6 +232,38 @@
       "type": "escape",
       "title": "Locked in the lunchroom",
       "created": "2026-10-21"
+    },
+    {
+      "repo": "vu23560lesson7deck",
+      "url": "https://teacherfrances.github.io/vu23560lesson7deck/",
+      "lesson": 7,
+      "type": "deck",
+      "title": "Lesson 7: On your own",
+      "created": "2026-11-01"
+    },
+    {
+      "repo": "vu23560lesson7revision",
+      "url": "https://teacherfrances.github.io/vu23560lesson7revision/",
+      "lesson": 7,
+      "type": "revision",
+      "title": "On your own: revision",
+      "created": "2026-11-01"
+    },
+    {
+      "repo": "vu23560lesson7doublejeopardy",
+      "url": "https://teacherfrances.github.io/vu23560lesson7doublejeopardy/",
+      "lesson": 7,
+      "type": "jeopardy",
+      "title": "On your own: Double Jeopardy",
+      "created": "2026-11-01"
+    },
+    {
+      "repo": "vu23560lesson7escaperoom",
+      "url": "https://teacherfrances.github.io/vu23560lesson7escaperoom/",
+      "lesson": 7,
+      "type": "escape",
+      "title": "Locked in the computer room",
+      "created": "2026-11-01"
     },
     {
       "repo": "vu23560seekandfind1",
