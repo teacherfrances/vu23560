@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-01",
+  "updated": "2026-11-04",
   "items": [
     {
       "repo": "vu23560lesson1deck",
@@ -152,6 +152,14 @@
       "type": "revision",
       "title": "Start to finish online: revision",
       "created": "2026-10-21"
+    },
+    {
+      "repo": "vu23560lesson4revision_listening",
+      "url": "https://teacherfrances.github.io/vu23560lesson4revision_listening/",
+      "lesson": 4,
+      "type": "revision",
+      "title": "Help on the phone: revision",
+      "created": "2026-11-03"
     },
     {
       "repo": "vu23560lesson4doublejeopardy",
