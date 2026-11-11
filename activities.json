@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-04",
+  "updated": "2026-11-11",
   "items": [
     {
       "repo": "vu23560lesson1deck",
@@ -192,6 +192,14 @@
       "type": "revision",
       "title": "Hit send: revision",
       "created": "2026-10-21"
+    },
+    {
+      "repo": "vu23560lesson5revision_short",
+      "url": "https://teacherfrances.github.io/vu23560lesson5revision_short/",
+      "lesson": 5,
+      "type": "revision",
+      "title": "Hit send: revision",
+      "created": "2026-11-11"
     },
     {
       "repo": "vu23560lesson5doublejeopardy",
