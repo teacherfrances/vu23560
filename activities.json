@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-18",
+  "updated": "2026-11-22",
   "items": [
     {
       "repo": "vu23560lesson1deck",
@@ -270,7 +270,7 @@
       "url": "https://teacherfrances.github.io/vu23560lesson7revision/",
       "lesson": 7,
       "type": "revision",
-      "title": "On your own: revision",
+      "title": "Hit refresh: revision",
       "created": "2026-11-01"
     },
     {
@@ -286,7 +286,7 @@
       "url": "https://teacherfrances.github.io/vu23560lesson7escaperoom/",
       "lesson": 7,
       "type": "escape",
-      "title": "Locked in the computer room",
+      "title": "Locked in the toilet: Hit refresh",
       "created": "2026-11-01"
     },
     {
@@ -304,6 +304,14 @@
       "type": "email",
       "title": "Email missions | VU23560",
       "created": "2026-10-23"
+    },
+    {
+      "repo": "vu23560festivemissions",
+      "url": "https://teacherfrances.github.io/vu23560festivemissions/",
+      "lesson": 0,
+      "type": "other",
+      "title": "Festive missions | VU23560",
+      "created": "2026-11-21"
     },
     {
       "repo": "vu23560internetmissions",
