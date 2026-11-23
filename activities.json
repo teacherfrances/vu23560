@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-22",
+  "updated": "2026-11-23",
   "items": [
     {
       "repo": "vu23560lesson1deck",
@@ -304,6 +304,14 @@
       "type": "email",
       "title": "Email missions | VU23560",
       "created": "2026-10-23"
+    },
+    {
+      "repo": "vu23560christmas_searchandsnap",
+      "url": "https://teacherfrances.github.io/vu23560christmas_searchandsnap/",
+      "lesson": 0,
+      "type": "other",
+      "title": "VU23560 Search and Snap: Christmas Day Out Hunt",
+      "created": "2026-11-23"
     },
     {
       "repo": "vu23560festivemissions",
