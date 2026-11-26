@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-25",
+  "updated": "2026-11-26",
   "items": [
     {
       "repo": "vu23560lesson1deck",
@@ -288,6 +288,30 @@
       "type": "escape",
       "title": "Locked in the toilet: Hit refresh",
       "created": "2026-11-01"
+    },
+    {
+      "repo": "vu23560lesson8deck",
+      "url": "https://teacherfrances.github.io/vu23560lesson8deck/",
+      "lesson": 8,
+      "type": "deck",
+      "title": "Lesson 8: Summer in the city",
+      "created": "2026-11-25"
+    },
+    {
+      "repo": "vu23560lesson8doublejeopardy",
+      "url": "https://teacherfrances.github.io/vu23560lesson8doublejeopardy/",
+      "lesson": 8,
+      "type": "jeopardy",
+      "title": "Summer in the city: Double Jeopardy",
+      "created": "2026-11-25"
+    },
+    {
+      "repo": "vu23560lesson8escaperoom",
+      "url": "https://teacherfrances.github.io/vu23560lesson8escaperoom/",
+      "lesson": 8,
+      "type": "escape",
+      "title": "Stuck in the Giant Tree: a Christmas escape room",
+      "created": "2026-11-25"
     },
     {
       "repo": "vu23560seekandfind1",
