@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-26",
+  "updated": "2026-11-28",
   "items": [
     {
       "repo": "vu23560lesson1deck",
@@ -312,6 +312,14 @@
       "type": "escape",
       "title": "Stuck in the Giant Tree: a Christmas escape room",
       "created": "2026-11-25"
+    },
+    {
+      "repo": "vu23560christmasboardgame",
+      "url": "https://teacherfrances.github.io/vu23560christmasboardgame/",
+      "lesson": 0,
+      "type": "jeopardy",
+      "title": "VU23560 Click to Christmas! End-of-term team game",
+      "created": "2026-11-28"
     },
     {
       "repo": "vu23560seekandfind1",
